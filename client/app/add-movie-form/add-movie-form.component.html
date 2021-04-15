@@ -1,0 +1,14 @@
+<div class="card">
+  <h4 class="card-header">Add new movie</h4>
+  <div class="card-body">
+    <form class="form-inline" [formGroup]="addMovieForm" (ngSubmit)="addMovie()">
+      <input class="form-control mr-2" type="text" name="title"
+             formControlName="title" placeholder="Title">
+      <input class="form-control mr-2" type="date" name="date"
+             formControlName="date" placeholder="Date" min="1600" max="2021">
+      <button class="btn btn-primary" type="submit" [disabled]="!addMovieForm.valid">
+        <i class="fa fa-plus"></i> Add
+      </button>
+    </form>
+  </div>
+</div>
