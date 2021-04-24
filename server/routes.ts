@@ -2,6 +2,8 @@ import * as express from 'express';
 
 import CatCtrl from './controllers/cat';
 import CharCtrl from './controllers/character';
+import FolderCtrl from './controllers/folder';
+import FileCtrl from './controllers/file';
 import MovieCtrl from './controllers/movie';
 import UserCtrl from './controllers/user';
 
@@ -9,6 +11,8 @@ function setRoutes(app): void {
   const router = express.Router();
   const catCtrl = new CatCtrl();
   const characterCtrl = new CharCtrl();
+  const folderCtrl = new FolderCtrl();
+  const fileCtrl = new FileCtrl();
   const movieCtrl = new MovieCtrl();
   const userCtrl = new UserCtrl();
 
@@ -27,6 +31,22 @@ function setRoutes(app): void {
   router.route('/character/:id').get(characterCtrl.get);
   router.route('/character/:id').put(characterCtrl.update);
   router.route('/character/:id').delete(characterCtrl.delete);
+
+  // Folders
+  router.route('/folders').get(folderCtrl.getAll);
+  router.route('/folders/count').get(folderCtrl.count);
+  router.route('/folders').post(folderCtrl.insert);
+  router.route('/folders/:id').get(folderCtrl.get);
+  router.route('/folders/:id').put(folderCtrl.update);
+  router.route('/folders/:id').delete(folderCtrl.delete);
+
+  // Files
+  router.route('/files').get(fileCtrl.getAll);
+  router.route('/files/count').get(fileCtrl.count);
+  router.route('/files').post(fileCtrl.insert);
+  router.route('/files/:id').get(fileCtrl.get);
+  router.route('/files/:id').put(fileCtrl.update);
+  router.route('/files/:id').delete(fileCtrl.delete);
 
   // Movies
   router.route('/movies').get(movieCtrl.getAll);
