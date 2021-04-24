@@ -15,9 +15,10 @@ import { LogoutComponent } from './logout/logout.component';
 import { AccountComponent } from './account/account.component';
 import { AdminComponent } from './admin/admin.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', component: AboutComponent },
+  { path: '', component: DashboardComponent },
   { path: 'cats', component: CatsComponent },
   { path: 'characters', component: CharactersComponent },
   { path: 'movies', component: MoviesComponent },

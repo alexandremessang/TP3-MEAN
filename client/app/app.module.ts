@@ -27,9 +27,10 @@ import { AddCharacterFormComponent } from './add-character-form/add-character-fo
 import { MoviesComponent } from './movies/movies.component';
 import { AddMovieFormComponent } from './add-movie-form/add-movie-form.component';
 import { MovieService } from './services/movie.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     CatsComponent,
     AddCatFormComponent,
@@ -44,6 +45,7 @@ import { MovieService } from './services/movie.service';
     AddCharacterFormComponent,
     MoviesComponent,
     AddMovieFormComponent,
+      DashboardComponent
    ],
   imports: [
     AppRoutingModule,

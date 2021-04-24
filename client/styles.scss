@@ -5,7 +5,12 @@ body {
 }
 
 .navbar {
-  background-color: #262626 !important;
+  background-color: #262626;
+  height: 70px;
+}
+
+.first-brand {
+  height: 70px;
 }
 
 @keyframes swing {
@@ -95,18 +100,26 @@ body {
 
 @media screen and (min-width: 768px) {
   .page-wrapper.toggled .page-content {
-    padding-left: 300px;
+    padding-left: 260px;
   }
 }
 /*----------------show sidebar button----------------*/
 #show-sidebar {
   position: fixed;
   left: 0;
-  top: 10px;
+  top: 70px;
   border-radius: 0 4px 4px 0px;
-  width: 35px;
+  width: 50px;
+  height: 50px;
   transition-delay: 0.3s;
+  z-index: 100;
 }
+
+#show-sidebar i {
+  font-size: 1rem;
+  margin-top: calc(50% - 0.3rem);
+}
+
 .page-wrapper.toggled #show-sidebar {
   left: -40px;
 }
@@ -364,7 +377,7 @@ body {
   display: inline-block;
   width: 100%;
   padding-left: 0px;
-  padding-top: 20px;
+  padding-top: 0px;
 }
 
 .page-wrapper .page-content > div {
@@ -415,7 +428,7 @@ body {
 /*-----------------------------chiller-theme-------------------------------------------------*/
 
 .chiller-theme .sidebar-wrapper {
-    background: #31353D;
+    background: #262626;
 }
 
 .chiller-theme .sidebar-wrapper .sidebar-header,
