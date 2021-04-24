@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastComponent } from './toast/toast.component';
 import { LoadingComponent } from './loading/loading.component';
 
+
 @NgModule({
   imports: [
     BrowserModule,
