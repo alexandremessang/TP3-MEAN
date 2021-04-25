@@ -1,6 +1,7 @@
-import { AfterViewChecked, ChangeDetectorRef, Component } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component, NgModule } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import * as $ from 'jquery';
+
 
 @Component({
   selector: 'app-root',
@@ -15,8 +16,6 @@ export class AppComponent implements AfterViewChecked {
   ngAfterViewChecked(): void {
     this.changeDetector.detectChanges();
   }
-
-
 
   ngAfterViewInit() {
     $(".sidebar-dropdown > a").on("click", function() {
@@ -50,4 +49,5 @@ export class AppComponent implements AfterViewChecked {
 
   };
 }
+
 

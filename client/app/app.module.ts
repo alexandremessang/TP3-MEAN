@@ -29,9 +29,10 @@ import { AddMovieFormComponent } from './add-movie-form/add-movie-form.component
 import { MovieService } from './services/movie.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     CatsComponent,
     AddCatFormComponent,
@@ -57,7 +58,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         // allowedDomains: ['localhost:3000', 'localhost:4200']
       }
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSliderModule
   ],
   providers: [
     AuthService,
