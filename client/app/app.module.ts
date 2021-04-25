@@ -28,6 +28,7 @@ import { MoviesComponent } from './movies/movies.component';
 import { AddMovieFormComponent } from './add-movie-form/add-movie-form.component';
 import { MovieService } from './services/movie.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [	
@@ -55,7 +56,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         tokenGetter: (): string => localStorage.getItem('token'),
         // allowedDomains: ['localhost:3000', 'localhost:4200']
       }
-    })
+    }),
+    BrowserAnimationsModule
   ],
   providers: [
     AuthService,
