@@ -7,6 +7,8 @@ import { SharedModule } from './shared/shared.module';
 // Services
 import { CatService } from './services/cat.service';
 import { CharacterService } from './services/character.service';
+import { FileService } from './services/file.service';
+import { MovieService } from './services/movie.service';
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuardLogin } from './services/auth-guard-login.service';
@@ -24,9 +26,10 @@ import { AdminComponent } from './admin/admin.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CharactersComponent } from './characters/characters.component';
 import { AddCharacterFormComponent } from './add-character-form/add-character-form.component';
+import { FilesComponent } from './files/files.component';
+import { AddFileFormComponent } from './add-file-form/add-file-form.component';
 import { MoviesComponent } from './movies/movies.component';
 import { AddMovieFormComponent } from './add-movie-form/add-movie-form.component';
-import { MovieService } from './services/movie.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
@@ -46,6 +49,8 @@ import { DisplayFileComponent } from './display-file/display-file.component';
     NotFoundComponent,
     CharactersComponent,
     AddCharacterFormComponent,
+    FilesComponent,
+    AddFileFormComponent,
     MoviesComponent,
     AddMovieFormComponent,
       DashboardComponent,
@@ -69,6 +74,7 @@ import { DisplayFileComponent } from './display-file/display-file.component';
     AuthGuardAdmin,
     CatService,
     CharacterService,
+    FileService,
     MovieService,
     UserService
   ],
