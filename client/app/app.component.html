@@ -5,7 +5,7 @@
   <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content">
       <div class="sidebar-brand first-brand">
-        <a href="#">Coding Factory</a>
+        <a>My account</a>
         <div id="close-sidebar">
           <i class="fas fa-times"></i>
         </div>
@@ -174,7 +174,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbar-supported-content">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto text-align-right">
           <!-- <li class="nav-item">
             <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
               <i class="fa fa-home"></i> Home
@@ -195,6 +195,12 @@
               <i class="fa fa-list"></i> Movies
             </a>
           </li> -->
+          <li class="nav-item" id="logo-title">
+              <a href=""><h3>Coding Factory</h3></a>
+          </li>
+          <li class="nav-item" style="width: 80%;">
+
+          </li>
           <li class="nav-item">
             <a routerLink="/login" class="nav-link" routerLinkActive="active" *ngIf="!auth.loggedIn">
               <i class="fa fa-sign-in"></i> Login
@@ -223,7 +229,9 @@
         </ul>
       </div>
     </nav>
-    <mat-slider min="1" max="100" step="1" value="1"></mat-slider>
-    <router-outlet></router-outlet>
+
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
   </main>
 </div>

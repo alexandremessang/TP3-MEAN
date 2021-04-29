@@ -4,6 +4,10 @@ body {
   margin: 0;
 }
 
+.main-content {
+  height: 100%;
+}
+
 .navbar {
   background-color: #262626;
   height: 70px;
@@ -11,6 +15,26 @@ body {
 
 .first-brand {
   height: 70px;
+}
+
+.navbar-nav {
+  width: 100%;
+}
+
+#logo-title {
+  color: white;
+  width: 100%;
+  margin: auto;
+}
+
+#logo-title h3 {
+  margin-bottom: 0;
+}
+
+#logo-title a, #logo-title a:active, #logo-title a:visited, #logo-title a:hover {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
 }
 
 @keyframes swing {
@@ -78,6 +102,7 @@ body {
 
 .page-wrapper {
   height: 100vh;
+  background-color: #D9D9D9;
 }
 
 .page-wrapper .theme {
