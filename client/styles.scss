@@ -4,6 +4,10 @@ body {
   margin: 0;
 }
 
+.main-content {
+  height: 100%;
+}
+
 .navbar {
   background-color: #262626;
   height: 70px;
@@ -98,6 +102,7 @@ body {
 
 .page-wrapper {
   height: 100vh;
+  background-color: #D9D9D9;
 }
 
 .page-wrapper .theme {
