@@ -10,6 +10,6 @@ const Schema = new mongoose.Schema({
   content: String,
 });
 
-const Folders = mongoose.model('Folders', Schema);
+const File = mongoose.model('File', Schema);
 
-export default Folders;
+export default File;

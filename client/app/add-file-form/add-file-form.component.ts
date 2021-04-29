@@ -17,7 +17,7 @@ export class AddFileFormComponent implements OnInit {
   title = new FormControl('', Validators.required);
   author = new FormControl('', Validators.required);
   language = new FormControl('', Validators.required);
-  isPublic = new FormControl('', Validators.required);
+  isPublic = new FormControl(true || false, Validators.required);
   content = new FormControl('', Validators.required);
 
   constructor(private fileService: FileService,
@@ -38,6 +38,7 @@ export class AddFileFormComponent implements OnInit {
   addFile(): void {
     this.fileService.addFile(this.addFileForm.value).subscribe(
       res => {
+        console.log(res);
         this.files.push(res);
         this.addFileForm.reset();
         this.toast.setMessage('item added successfully.', 'success');

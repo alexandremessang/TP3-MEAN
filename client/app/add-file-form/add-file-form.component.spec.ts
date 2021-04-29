@@ -36,7 +36,7 @@ describe('Component: AddFileForm', () => {
 
   it('should display header text', () => {
     const el = fixture.debugElement.query(By.css('h4')).nativeElement;
-    expect(el.textContent).toContain('Add new character');
+    expect(el.textContent).toContain('Add new file');
   });
 
   it('should display the add form', () => {

@@ -5,12 +5,16 @@
       <input class="form-control mr-2" type="text" name="title"
             formControlName="title" placeholder="Title">
       <input class="form-control mr-2" type="text" name="author"
-            formControlName="author" placeholder="Author" min="0">
+            formControlName="author" placeholder="Author">
       <input class="form-control mr-2" type="text" name="language"
-            formControlName="language" placeholder="Language" min="0">
+            formControlName="language" placeholder="Language">
       <textarea class="form-control mr-2" name="content"
-            formControlName="content" placeholder="Content..." min="0">
+            formControlName="content" placeholder="Content...">
       </textarea>
+      <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="IsPublic" formControlName="isPublic">
+          <label class="form-check-label" for="IsPublic">IsPublic</label>
+      </div>
       <button class="btn btn-primary" type="submit" [disabled]="!addFileForm.valid">
         <i class="fa fa-plus"></i> Add
       </button>
