@@ -1,0 +1,19 @@
+<div class="card">
+  <h4 class="card-header">Add new File</h4>
+  <div class="card-body">
+    <form class="form-inline" [formGroup]="addFileForm" (ngSubmit)="addFile()">
+      <input class="form-control mr-2" type="text" name="title"
+            formControlName="title" placeholder="Title">
+      <input class="form-control mr-2" type="text" name="author"
+            formControlName="author" placeholder="Author" min="0">
+      <input class="form-control mr-2" type="text" name="language"
+            formControlName="language" placeholder="Language" min="0">
+      <textarea class="form-control mr-2" name="content"
+            formControlName="content" placeholder="Content..." min="0">
+      </textarea>
+      <button class="btn btn-primary" type="submit" [disabled]="!addFileForm.valid">
+        <i class="fa fa-plus"></i> Add
+      </button>
+    </form>
+  </div>
+</div>

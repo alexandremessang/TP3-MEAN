@@ -36,15 +36,17 @@ describe('Component: App', () => {
     expect(de[0].nativeElement.textContent).toContain('Home');
     expect(de[1].nativeElement.textContent).toContain('Cats');
     expect(de[2].nativeElement.textContent).toContain('Characters');
-    expect(de[3].nativeElement.textContent).toContain('Movies');
-    expect(de[4].nativeElement.textContent).toContain('Login');
-    expect(de[5].nativeElement.textContent).toContain('Register');
+    expect(de[3].nativeElement.textContent).toContain('Files');
+    expect(de[4].nativeElement.textContent).toContain('Movies');
+    expect(de[5].nativeElement.textContent).toContain('Login');
+    expect(de[6].nativeElement.textContent).toContain('Register');
     expect(de[0].attributes.routerLink).toBe('/');
     expect(de[1].attributes.routerLink).toBe('/cats');
     expect(de[2].attributes.routerLink).toBe('/characters');
-    expect(de[3].attributes.routerLink).toBe('/movies');
-    expect(de[4].attributes.routerLink).toBe('/login');
-    expect(de[5].attributes.routerLink).toBe('/register');
+    expect(de[3].attributes.routerLink).toBe('/files');
+    expect(de[4].attributes.routerLink).toBe('/movies');
+    expect(de[5].attributes.routerLink).toBe('/login');
+    expect(de[6].attributes.routerLink).toBe('/register');
   });
 
   it('should display the navigation bar correctly for logged users', () => {
@@ -56,15 +58,17 @@ describe('Component: App', () => {
     expect(de[0].nativeElement.textContent).toContain('Home');
     expect(de[1].nativeElement.textContent).toContain('Cats');
     expect(de[2].nativeElement.textContent).toContain('Characters');
-    expect(de[3].nativeElement.textContent).toContain('Movies');
-    expect(de[4].nativeElement.textContent).toContain('Account (Tester)');
-    expect(de[5].nativeElement.textContent).toContain('Logout');
+    expect(de[3].nativeElement.textContent).toContain('Files');
+    expect(de[4].nativeElement.textContent).toContain('Movies');
+    expect(de[5].nativeElement.textContent).toContain('Account (Tester)');
+    expect(de[6].nativeElement.textContent).toContain('Logout');
     expect(de[0].attributes.routerLink).toBe('/');
     expect(de[1].attributes.routerLink).toBe('/cats');
     expect(de[2].attributes.routerLink).toBe('/characters');
-    expect(de[3].attributes.routerLink).toBe('/movies');
-    expect(de[4].attributes.routerLink).toBe('/account');
-    expect(de[5].attributes.routerLink).toBe('/logout');
+    expect(de[3].attributes.routerLink).toBe('/files');
+    expect(de[4].attributes.routerLink).toBe('/movies');
+    expect(de[5].attributes.routerLink).toBe('/account');
+    expect(de[6].attributes.routerLink).toBe('/logout');
   });
 
   it('should display the navigation bar correctly for admin users', () => {
