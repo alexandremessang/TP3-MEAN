@@ -27,6 +27,12 @@ body {
   margin-bottom: 0;
 }
 
+#logo-title a, #logo-title a:active, #logo-title a:visited, #logo-title a:hover {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
 @keyframes swing {
   0% {
     transform: rotate(0deg);
