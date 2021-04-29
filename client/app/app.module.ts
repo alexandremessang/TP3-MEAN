@@ -30,6 +30,7 @@ import { MovieService } from './services/movie.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
+import { DisplayFileComponent } from './display-file/display-file.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { MatSliderModule } from '@angular/material/slider';
     AddCharacterFormComponent,
     MoviesComponent,
     AddMovieFormComponent,
-      DashboardComponent
+      DashboardComponent,
+      DisplayFileComponent
    ],
   imports: [
     AppRoutingModule,

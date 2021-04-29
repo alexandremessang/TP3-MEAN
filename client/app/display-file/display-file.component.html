@@ -1,0 +1,13 @@
+<div *ngIf="!isLoading">
+  <h2>{{file.title}}</h2>
+  <div><span>auteur : </span>{{file.author}}</div>
+  <div><span>likes : </span>{{file.likes}}</div>
+  <button class="btn btn-sm btn-danger ml-1" (click)="deleteFile(file)">
+    <i class="fa fa-trash"></i> Delete
+  </button>
+  <div>
+    <label>Contenu du fichier : </label>
+    <pre><code class="{{file.language}}">{{file.content}}</code></pre>
+  </div>
+</div>
+
