@@ -43,7 +43,7 @@
     "express": "^4.17.1",
     "font-awesome": "^4.7.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.12.5",
+    "mongoose": "^5.10.13",
     "morgan": "^1.10.0",
     "popper.js": "^1.16.1",
     "prismjs": "^1.23.0",
