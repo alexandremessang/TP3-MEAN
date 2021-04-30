@@ -5,7 +5,10 @@ import { ToastComponent } from '../shared/toast/toast.component';
 
 @Component({
   selector: 'app-display-file',
-  templateUrl: './display-file.component.html',
+  template: `
+    <ngx-prism
+      [language] = "file.language"
+    >{{file.content}}</ngx-prism>`,
   styleUrls: ['./display-file.component.scss']
 })
 export class DisplayFileComponent implements OnInit {

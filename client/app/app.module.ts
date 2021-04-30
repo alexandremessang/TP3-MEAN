@@ -4,6 +4,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 // Modules
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
+import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 // Services
 import { CatService } from './services/cat.service';
 import { CharacterService } from './services/character.service';
@@ -66,7 +67,8 @@ import { DisplayFileComponent } from './display-file/display-file.component';
       }
     }),
     BrowserAnimationsModule,
-    MatSliderModule
+    MatSliderModule,
+    HighlightModule
   ],
   providers: [
     AuthService,
@@ -76,7 +78,13 @@ import { DisplayFileComponent } from './display-file/display-file.component';
     CharacterService,
     FileService,
     MovieService,
-    UserService
+    UserService,
+    {
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: {
+        fullLibraryLoader: () => import('highlight.js'),
+      }
+    }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

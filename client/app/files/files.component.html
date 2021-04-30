@@ -48,7 +48,7 @@
 
               <input class="form-control mr-2" type="text" name="author"
                      [(ngModel)]="file.author" placeholder="Author" required>
-              
+
               <input class="form-control mr-2" type="text" name="language"
                      [(ngModel)]="file.language" placeholder="Language" required>
 
@@ -67,6 +67,11 @@
                 <i class="fa fa-times"></i> Cancel
               </button>
             </form>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6">
+            <pre><code [highlight]="file.content"></code></pre>
           </td>
         </tr>
       </tbody>
