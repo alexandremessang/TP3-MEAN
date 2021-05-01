@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { FileService } from '../services/file.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { File } from '../shared/models/file.model';
+
 
 @Component({
   selector: 'app-add-file-form',
@@ -12,12 +13,19 @@ import { File } from '../shared/models/file.model';
 
 export class AddFileFormComponent implements OnInit {
   @Input() files: File[];
+  @Input() isCreating: boolean;
+
+  @Output() cancelCreatingEvent = new EventEmitter();
+
+  file = new File();
+
+  isChecked = false;
 
   addFileForm: FormGroup;
   title = new FormControl('', Validators.required);
   author = new FormControl('', Validators.required);
   language = new FormControl('', Validators.required);
-  isPublic = new FormControl(true || false, Validators.required);
+  isPublic = new FormControl();
   content = new FormControl('', Validators.required);
 
   constructor(private fileService: FileService,
@@ -25,14 +33,26 @@ export class AddFileFormComponent implements OnInit {
               public toast: ToastComponent) { }
 
   ngOnInit(): void {
+    console.log(this.file.isPublic)
     this.addFileForm = this.formBuilder.group({
       title: this.title,
       author: this.author,
       language: this.language,
       likes: 0,
-      isPublic: false,
+      isPublic: this.isChecked,
       content: this.content,
     });
+  }
+
+  getfiles(): void {
+    this.fileService.getFiles().subscribe(
+      data => this.files = data,
+      error => console.log(error),
+    );
+  }
+
+  cancelCreating(): void {
+    this.cancelCreatingEvent.emit(this.isCreating);
   }
 
   addFile(): void {

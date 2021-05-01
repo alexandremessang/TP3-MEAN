@@ -2,81 +2,146 @@
 
 <app-toast [message]="toast.message"></app-toast>
 
-<div class="card mb-3" *ngIf="!isLoading">
-  <h4 class="card-header">Current files ({{files.length}})</h4>
-  <div class="card-body">
-    <table class="table table-bordered">
-      <thead class="thead-light">
-        <tr>
-          <th scope="col">Title</th>
-          <th scope="col">Author</th>
-          <th scope="col">Language</th>
-          <th scope="col">Content</th>
-          <th scope="col">IsPublic</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody *ngIf="files.length === 0">
-        <tr>
-          <td colspan="4">There are no files in the DB. Add a new file below.</td>
-        </tr>
-      </tbody>
-      <tbody *ngIf="!isEditing">
-        <tr *ngFor="let file of files">
-          <td>{{file.title}}</td>
-          <td>{{file.author}}</td>
-          <td>{{file.language}}</td>
-          <td>{{file.content}}</td>
-          <td>{{file.isPublic}}</td>
-          <td>
-            <button class="btn btn-sm btn-primary" (click)="enableEditing(file)">
-              <i class="fa fa-pencil"></i> Edit
-            </button>
-            <button class="btn btn-sm btn-danger ml-1" (click)="deletefile(file)">
-              <i class="fa fa-trash"></i> Delete
-            </button>
-          </td>
-        </tr>
-      </tbody>
-      <tbody *ngIf="isEditing">
-        <tr>
-          <td colspan="4">
-            <form class="form-inline" #form="ngForm" (ngSubmit)="editfile(file)">
-
-              <input class="form-control mr-2" type="text" name="title"
-                     [(ngModel)]="file.title" placeholder="Title" required>
-
-              <input class="form-control mr-2" type="text" name="author"
-                     [(ngModel)]="file.author" placeholder="Author" required>
-
-              <input class="form-control mr-2" type="text" name="language"
-                     [(ngModel)]="file.language" placeholder="Language" required>
-
-              <textarea class="form-control mr-2" name="content"
-                     [(ngModel)]="file.content" placeholder="Content..." required>
-              </textarea>
-
-              <input class="form-control mr-2" type="radio" name="isPublic"
-                     [(ngModel)]="file.isPublic" placeholder="Is Public">
-
-              <button class="btn btn-sm btn-primary mr-2" type="submit" [disabled]="!form.form.valid">
-                <i class="fa fa-floppy-o"></i> Save
-              </button>
-
-              <button class="btn btn-sm btn-warning" (click)="cancelEditing()">
-                <i class="fa fa-times"></i> Cancel
-              </button>
-            </form>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="6">
-            <pre><code [highlight]="file.content"></code></pre>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<div class="row" *ngIf="!isLoading && !isEditing && !isViewing && !isCreating">
+  <div class="col-12 text-left">
+      <button class="add-btn" type="button" (click)="enableCreating(file)">
+        <i class="fas fa-plus"></i>
+      </button>
+  </div>
+  <div class="col-12 mt-3">
+    <div class="card mb-3">
+      <h4 class="card-header">Current files ({{files.length}})</h4>
+      <div class="card-body">
+        <table class="table table-bordered">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Author</th>
+              <th scope="col">Language</th>
+              <th *ngIf="isEditing" scope="col">Content</th>
+              <th scope="col">IsPublic</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="files.length === 0">
+            <tr>
+              <td colspan="4">There are no files in the DB. Add a new file below.</td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="!isEditing">
+            <tr *ngFor="let file of files">
+              <td>{{file.title}}</td>
+              <td>{{file.author}}</td>
+              <td>{{file.language}}</td>
+              <td *ngIf="isEditing">{{file.content}}</td>
+              <td>{{file.isPublic}}</td>
+              <td>
+                  <tr>
+                    <td class="action-form">
+                      <button class="btn-action" type="button" (click)="enableViewing(file)">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                    </td>
+                    <td class="action-form">
+                      <button class="btn-action" type="button" (click)="enableEditing(file)">
+                        <i class="fa fa-pencil"></i>
+                      </button>
+                    </td>
+                    <td class="action-form">
+                      <button class="btn-action" type="button" (click)="deletefile(file)">
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 
-<app-add-file-form *ngIf="!isEditing" [files]="files"></app-add-file-form>
+
+
+
+<!-- Edit view -->
+<div *ngIf="isEditing">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 text-left">
+        <button class="back-btn" (click)="cancelEditing()">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+      </div>
+    </div>
+    <div class="col-12">
+      <h3>Add new file</h3>
+      <div class="row">
+        <div class="col-12 mt-lg-5">
+          <form class="form-inline" #form="ngForm" (ngSubmit)="editfile(file)">
+            <div class="row">
+                <label for="author"></label>
+                <!-- User logged (hidden) -->
+                <input id="author" class="form-control mr-2" type="text" name="author"
+                          [(ngModel)]="file.author" placeholder="Author" value="test" hidden required>
+              <div class="col-12 col-lg-6">
+                <label for="title" class="justify-content-start">Title</label>
+                <input id="title" class="form-control mr-2" type="text" name="title"
+                [(ngModel)]="file.title" placeholder="Title" required>
+              </div>
+              <div class="col-12 col-lg-3 text-center">
+                <label for="language" class="justify-content-start">Language</label>
+                <input id="language" class="form-control mr-2" type="text" name="language"
+                           [(ngModel)]="file.language" placeholder="Language" required>
+              </div>
+              <div class="col-12 col-lg-3 text-center">
+                <label for="ispublic">Public</label>
+                <mat-slide-toggle [(ngModel)]="file.isPublic" [color]="color" id="ispublic" name="isPublic" class="mt-2"></mat-slide-toggle>
+              </div>
+              <div class="col-12 mt-5">
+                <label for="content" class="justify-content-start">Content</label>
+                <textarea class="form-control mr-2 code-input" name="content"
+                           [(ngModel)]="file.content" placeholder="Content..." required>
+                    </textarea>
+              </div>
+              <div class="col-12 text-right mt-3">
+                <button class="save-button mr-2" type="submit" [disabled]="!form.form.valid">
+                  <!-- <i class="fa fa-floppy-o"></i>--> Save
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Single view -->
+<div *ngIf="isViewing">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 text-left">
+        <button class="back-btn" (click)="cancelViewing()">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+      </div>
+      <div class="col-4">
+          <h3>{{file.author}}</h3>
+      </div>
+      <div class="col-6">
+        <h5>{{file.title}}</h5>
+      </div>
+      <div class="col-2 text-center">
+        <h5 class="language-badge">{{file.language}}</h5>
+      </div>
+      <div class="col-12 mt-5">
+        <pre><code [highlight]="file.content"></code></pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<app-add-file-form *ngIf="isCreating" [files]="files" [isCreating]="isCreating" (cancelCreatingEvent)="onCancelCreatingFile($event)"></app-add-file-form>

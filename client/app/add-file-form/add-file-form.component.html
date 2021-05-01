@@ -1,23 +1,51 @@
-<div class="card">
-  <h4 class="card-header">Add new File</h4>
-  <div class="card-body">
-    <form class="form-inline" [formGroup]="addFileForm" (ngSubmit)="addFile()">
-      <input class="form-control mr-2" type="text" name="title"
-            formControlName="title" placeholder="Title">
-      <input class="form-control mr-2" type="text" name="author"
-            formControlName="author" placeholder="Author">
-      <input class="form-control mr-2" type="text" name="language"
-            formControlName="language" placeholder="Language">
-      <textarea class="form-control mr-2" name="content"
-            formControlName="content" placeholder="Content...">
-      </textarea>
-      <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" id="IsPublic" formControlName="isPublic">
-          <label class="form-check-label" for="IsPublic">IsPublic</label>
-      </div>
-      <button class="btn btn-primary" type="submit" [disabled]="!addFileForm.valid">
-        <i class="fa fa-plus"></i> Add
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 text-left">
+      <button class="back-btn" (click)="cancelCreating()">
+        <i class="fas fa-arrow-left"></i>
       </button>
-    </form>
+    </div>
+    <div class="col-12">
+      <h3>Add new file</h3>
+      <div class="row mt-lg-5">
+        <div class="col-12">
+          <form class="form-inline" [formGroup]="addFileForm" (ngSubmit)="addFile()">
+            <div class="row">
+              <div class="col-12 col-lg-6">
+                <label for="title" class="justify-content-start">Title</label>
+                <input class="form-control mr-2" type="text" id="title" name="title"
+                  formControlName="title" placeholder="Title">
+              </div>
+              <div class="col-12 col-lg-3">
+                <label for="language" class="justify-content-start">Language</label>
+                <input class="form-control mr-2" type="text" id="language" name="language"
+                  formControlName="language" placeholder="Language">
+              </div>
+              <div class="col-12 col-lg-3 text-center">
+                <label class="form-check-label" for="IsPublic">Public</label>
+                <mat-slide-toggle [(ngModel)]="isChecked" id="ispublic" name="public" class="mt-2"></mat-slide-toggle>
+              </div>
+              <div class="col-12 mt-5">
+                <label for="content" class="justify-content-start">Content</label>
+                <textarea id="content" class="form-control mr-2 code-input" name="content"
+                  formControlName="content" placeholder="Content...">
+                </textarea>
+              </div>
+            </div>
+              <input class="form-control mr-2" type="text" name="author"
+                                formControlName="author" placeholder="Author" value="test" hidden>
+            <!-- <div class="form-check form-switch">
+
+            </div> -->
+            <div class="col-12 text-right mt-3">
+              <button class="save-button" type="submit" [disabled]="!addFileForm.valid">
+              <!-- <i class="fa fa-plus"></i>  --> Add
+            </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+

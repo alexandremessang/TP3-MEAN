@@ -1,0 +1,32 @@
+form {
+  display: block;
+}
+
+input {
+  width: 100% !important;
+}
+
+.code-input {
+  border:1px solid #999999;
+  width:100%;
+  min-height: 50vh;
+  margin:5px 0;
+  padding:3px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
+}
+
+.save-button {
+  margin: auto;
+  background-color: #ff4081;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  padding: 10px;
+  color: white;
+  outline: none;
+}
+.save-button:hover {
+  padding: 12px;
+}
