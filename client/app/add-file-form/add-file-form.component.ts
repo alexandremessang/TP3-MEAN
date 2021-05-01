@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { FileService } from '../services/file.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { File } from '../shared/models/file.model';
-
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-add-file-form',
@@ -23,20 +23,20 @@ export class AddFileFormComponent implements OnInit {
 
   addFileForm: FormGroup;
   title = new FormControl('', Validators.required);
-  author = new FormControl('', Validators.required);
   language = new FormControl('', Validators.required);
-  isPublic = new FormControl();
+  isPublic = new FormControl('', Validators.nullValidator);
   content = new FormControl('', Validators.required);
 
   constructor(private fileService: FileService,
               private formBuilder: FormBuilder,
-              public toast: ToastComponent) { }
+              public toast: ToastComponent,
+              public auth: AuthService) { }
 
   ngOnInit(): void {
     console.log(this.file.isPublic)
     this.addFileForm = this.formBuilder.group({
       title: this.title,
-      author: this.author,
+      author: this.auth.currentUser.username,
       language: this.language,
       likes: 0,
       isPublic: this.isChecked,

@@ -51,7 +51,7 @@ export class FilesComponent implements OnInit {
   enableCreating(file: File): void {
     this.isViewing = false;
     this.isEditing = false;
-    this.isCreating = true
+    this.isCreating = true;
     this.file = new File();
   }
 

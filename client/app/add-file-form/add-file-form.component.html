@@ -7,6 +7,11 @@
     </div>
     <div class="col-12">
       <h3>Add new file</h3>
+      <!-- Test pour vérifier les valeurs de vérification du formulaire + de l'utilisateur connecté -->
+      <!-- <div>
+        Valeur de validité du formulaire : {{addFileForm.valid}}
+        Test utilisateur connecté : {{auth.currentUser.username}}
+      </div> -->
       <div class="row mt-lg-5">
         <div class="col-12">
           <form class="form-inline" [formGroup]="addFileForm" (ngSubmit)="addFile()">
@@ -32,16 +37,12 @@
                 </textarea>
               </div>
             </div>
-              <input class="form-control mr-2" type="text" name="author"
-                                formControlName="author" placeholder="Author" value="test" hidden>
-            <!-- <div class="form-check form-switch">
-
-            </div> -->
             <div class="col-12 text-right mt-3">
               <button class="save-button" type="submit" [disabled]="!addFileForm.valid">
-              <!-- <i class="fa fa-plus"></i>  --> Add
+              Add
             </button>
             </div>
+
           </form>
         </div>
       </div>
