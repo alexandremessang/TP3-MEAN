@@ -4,68 +4,77 @@
   </a>
   <nav id="sidebar" class="sidebar-wrapper">
     <div class="sidebar-content">
+      <!-- Mettre un ngif ici pour tester si on est loggé ne marche pas, on perd l'action de fermeture sur la div "close-sidebar" tant qu'on ne recharge pas entièrement la page  -->
       <div class="sidebar-brand first-brand">
-        <a>My account</a>
+        <a>
+        <div *ngIf="auth.loggedIn">
+          My account
+        </div>
+        <div *ngIf="!auth.loggedIn">
+          Not connected
+        </div>
+        </a>
         <div id="close-sidebar">
           <i class="fas fa-times"></i>
         </div>
       </div>
-      <div class="sidebar-header">
-        <div class="user-pic">
-          <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
-            alt="User picture">
-        </div>
-        <div class="user-info">
-          <span class="user-name">Jhon
-            <strong>Smith</strong>
-          </span>
-          <span class="user-role">Administrator</span>
-          <span class="user-status">
-            <i class="fa fa-circle"></i>
-            <span>Online</span>
-          </span>
-        </div>
-      </div>
-      <!-- sidebar-header  -->
-      <!-- <div class="sidebar-search">
-        <div>
-          <div class="input-group">
-            <input type="text" class="form-control search-menu" placeholder="Search...">
-            <div class="input-group-append">
-              <span class="input-group-text">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </span>
-            </div>
+      <div *ngIf="auth.loggedIn">
+        <div class="sidebar-header">
+          <div class="user-pic">
+            <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+              alt="User picture">
+          </div>
+          <div class="user-info">
+            <span class="user-name">
+              <strong>{{auth.currentUser.username}}</strong>
+            </span>
+            <span class="user-role">{{auth.currentUser.role}}</span>
+            <span class="user-status">
+              <i class="fa fa-circle"></i>
+              <span>Online</span>
+            </span>
           </div>
         </div>
-      </div> -->
-      <!-- sidebar-search  -->
-      <div class="sidebar-menu">
-        <ul>
-          <li class="header-menu">
-            <span>General</span>
-          </li>
-          <li>
-            <a href="">
-              <i class="fa fa-tachometer-alt"></i>
-              <span>Dashboard</span>
-            </a>
-          </li>
-          <li>
-            <a href="/files">
-              <i class="fa fa-folder"></i>
-              <span>My Files</span>
-            </a>
-          </li>
-        </ul>
+        <!-- sidebar-header  -->
+        <!-- <div class="sidebar-search">
+          <div>
+            <div class="input-group">
+              <input type="text" class="form-control search-menu" placeholder="Search...">
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <!-- sidebar-search  -->
+        <div class="sidebar-menu">
+          <ul>
+            <li class="header-menu">
+              <span>General</span>
+            </li>
+            <li>
+              <a href="">
+                <i class="fa fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a href="/files">
+                <i class="fa fa-folder"></i>
+                <span>My Files</span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <!-- sidebar-menu  -->
     </div>
-    <!-- sidebar-content  -->
+    <!-- sidebar-menu  -->
+  <!-- sidebar-content  -->
   </nav>
 
   <main class="page-content">
-
     <nav class="navbar navbar-expand-lg navbar-dark">
       <button class="navbar-toggler" type="button"
               data-toggle="collapse" data-target="#navbar-supported-content"
@@ -74,26 +83,6 @@
       </button>
       <div class="collapse navbar-collapse" id="navbar-supported-content">
         <ul class="navbar-nav mr-auto text-align-right">
-          <!-- <li class="nav-item">
-            <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-              <i class="fa fa-home"></i> Home
-            </a>
-          </li>
-          <li class="nav-item">
-            <a routerLink="/cats" class="nav-link" routerLinkActive="active">
-              <i class="fa fa-list"></i> Cats
-            </a>
-          </li>
-          <li class="nav-item">
-            <a routerLink="/characters" class="nav-link" routerLinkActive="active">
-              <i class="fa fa-list"></i> Characters
-            </a>
-          </li>
-          <li class="nav-item">
-            <a routerLink="/movies" class="nav-link" routerLinkActive="active">
-              <i class="fa fa-list"></i> Movies
-            </a>
-          </li> -->
           <li class="nav-item" id="logo-title">
               <a href=""><h3>Coding Factory</h3></a>
           </li>
@@ -110,11 +99,11 @@
               <i class="fa fa-user-plus"></i> Register
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a routerLink="/files" class="nav-link" routerLinkActive="active" *ngIf="auth.loggedIn">
               <i class="fa fa-copy"></i> Files
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a routerLink="/account" class="nav-link" routerLinkActive="active" *ngIf="auth.loggedIn">
               <i class="fa fa-user"></i> Account ({{auth.currentUser.username}})
