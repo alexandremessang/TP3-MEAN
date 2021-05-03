@@ -81,10 +81,12 @@
         <div class="col-12 mt-lg-5">
           <form class="form-inline" #form="ngForm" (ngSubmit)="editfile(file)">
             <div class="row">
-                <label for="author"></label>
+              <div class="col-12">
+                <label for="author" class="justify-content-start">Author</label>
                 <!-- User logged (hidden) -->
                 <input id="author" class="form-control mr-2" type="text" name="author"
-                          [(ngModel)]="file.author" placeholder="Author" value="test" hidden required>
+                          [(ngModel)]="file.author" placeholder="Author" value="{{file.author}}" disabled>
+              </div>
               <div class="col-12 col-lg-6">
                 <label for="title" class="justify-content-start">Title</label>
                 <input id="title" class="form-control mr-2" type="text" name="title"
