@@ -13,6 +13,8 @@ export class AdminComponent implements OnInit {
 
   users: User[] = [];
   isLoading = true;
+  isEditing = false;
+  user = new User();
 
   constructor(public auth: AuthService,
               public toast: ToastComponent,
@@ -40,4 +42,27 @@ export class AdminComponent implements OnInit {
     }
   }
 
+  enableEditing(user: User): void {
+    this.isEditing = true;
+    this.user = user;
+  }
+
+  cancelEditing(): void {
+    this.isEditing = false;
+    this.user = new User();
+    this.toast.setMessage('item editing cancelled.', 'warning');
+    // reload the files to reset the editing
+    this.getUsers();
+  }
+
+  edituser(user: User): void {
+    this.userService.editUser(user).subscribe(
+      () => {
+        this.isEditing = false;
+        this.user = user;
+        this.toast.setMessage('item edited successfully.', 'success');
+      },
+      error => console.log(error)
+    );
+  }
 }
