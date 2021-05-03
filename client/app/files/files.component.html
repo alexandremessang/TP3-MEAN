@@ -31,7 +31,7 @@
           <tbody *ngIf="!isEditing">
             <tr *ngFor="let file of files">
               <td>{{file.title}}</td>
-              <td>{{file.author}}</td>
+              <td>récupérer le nom à partir de cet id (populate) : {{file.author}}</td>
               <td>{{file.language}}</td>
               <td *ngIf="isEditing">{{file.content}}</td>
               <td>{{file.isPublic}}</td>

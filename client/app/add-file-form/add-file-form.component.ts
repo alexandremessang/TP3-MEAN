@@ -36,7 +36,7 @@ export class AddFileFormComponent implements OnInit {
     console.log(this.file.isPublic)
     this.addFileForm = this.formBuilder.group({
       title: this.title,
-      author: this.auth.currentUser.username,
+      author: this.auth.currentUser._id,
       language: this.language,
       likes: 0,
       isPublic: this.isChecked,
