@@ -58,14 +58,14 @@
             <li>
               <a href="">
                 <i class="fa fa-tachometer-alt"></i>
-                <span>Dashboard</span>
+                <span matTooltip="All of the public files">Dashboard</span>
               </a>
             </li>
             <div *ngIf="auth.loggedIn">
               <li>
                 <a href="/files">
                   <i class="fa fa-folder"></i>
-                  <span>My Files</span>
+                  <span matTooltip="Your files">My Files</span>
                 </a>
               </li>
             </div>
@@ -107,12 +107,12 @@
             </a>
           </li> -->
           <li class="nav-item">
-            <a routerLink="/account" class="nav-link" routerLinkActive="active" *ngIf="auth.loggedIn">
+            <a routerLink="/account" class="nav-link" routerLinkActive="active" *ngIf="auth.loggedIn" matTooltip="Manage your informations">
               <i class="fa fa-user"></i> Account ({{auth.currentUser.username}})
             </a>
           </li>
           <li class="nav-item">
-            <a routerLink="/admin" class="nav-link" routerLinkActive="active" *ngIf="auth.loggedIn && auth.isAdmin">
+            <a routerLink="/admin" class="nav-link" routerLinkActive="active" *ngIf="auth.loggedIn && auth.isAdmin" matTooltip="Manage users">
               <i class="fa fa-lock"></i> Admin
             </a>
           </li>
