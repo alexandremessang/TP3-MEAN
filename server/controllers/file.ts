@@ -33,10 +33,10 @@ class File extends BaseCtrl {
   getAllPublic = async (req, res) => {
     try {
       if(this.getType(req.query.language) !== ""){
-        const docs = await this.model.find({ language: { $eq : req.query.language }})
+        const docs = await this.model.find({ language: { $eq : req.query.language }, isPublic : { $eq: true }})
         res.status(200).json(docs);
       }else{
-        const docs = await this.model.find({})
+        const docs = await this.model.find({ isPublic : { $eq: true }})
         res.status(200).json(docs);
       }
     } catch (err) {
