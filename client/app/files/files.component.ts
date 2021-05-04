@@ -4,6 +4,7 @@ import { FileService } from '../services/file.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { File } from '../shared/models/file.model';
 import { getMatIconFailedToSanitizeLiteralError } from '@angular/material/icon';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class FilesComponent implements OnInit {
   isCreating = false;
 
   constructor(private fileService: FileService,
+              private auth: AuthService,
               public toast: ToastComponent) { }
 
   ngOnInit(): void {
@@ -30,7 +32,7 @@ export class FilesComponent implements OnInit {
   }
 
   getfiles(): void {
-    this.fileService.getFiles().subscribe(
+    this.fileService.getMyFiles(this.auth.currentUser.username).subscribe(
       data => this.files = data,
       error => console.log(error),
       () => this.isLoading = false
