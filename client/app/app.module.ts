@@ -5,10 +5,17 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTreeModule} from '@angular/material/tree';
+import { FileExplorerModule } from './file-explorer/file-explorer.module';
 // Services
 import { CatService } from './services/cat.service';
 import { CharacterService } from './services/character.service';
 import { FileService } from './services/file.service';
+import { FolderService } from './services/folder.service';
 import { MovieService } from './services/movie.service';
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
@@ -32,9 +39,10 @@ import { AddFileFormComponent } from './add-file-form/add-file-form.component';
 import { MoviesComponent } from './movies/movies.component';
 import { AddMovieFormComponent } from './add-movie-form/add-movie-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule } from '@angular/material/slider';
 import { DisplayFileComponent } from './display-file/display-file.component';
+import { FoldersComponent } from './folders/folders.component';
+import { FileExplorerViewComponent } from './file-explorer-view/file-explorer-view.component';
+
 
 @NgModule({
   declarations: [
@@ -54,8 +62,10 @@ import { DisplayFileComponent } from './display-file/display-file.component';
     AddFileFormComponent,
     MoviesComponent,
     AddMovieFormComponent,
-      DashboardComponent,
-      DisplayFileComponent
+    DashboardComponent,
+    DisplayFileComponent,
+    FoldersComponent,
+    FileExplorerViewComponent,
    ],
   imports: [
     AppRoutingModule,
@@ -68,7 +78,11 @@ import { DisplayFileComponent } from './display-file/display-file.component';
     }),
     BrowserAnimationsModule,
     MatSliderModule,
-    HighlightModule
+    HighlightModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTreeModule,
+    FileExplorerModule,
   ],
   providers: [
     AuthService,
@@ -77,6 +91,7 @@ import { DisplayFileComponent } from './display-file/display-file.component';
     CatService,
     CharacterService,
     FileService,
+    FolderService,
     MovieService,
     UserService,
     {
