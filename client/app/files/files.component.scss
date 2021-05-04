@@ -1,0 +1,26 @@
+.language-badge {
+  border: none;
+  background-color: #4c6473;
+  color: white;
+  border-radius: 25px;
+  padding: 5px;
+}
+
+form {
+  display: block;
+}
+
+.code-input {
+  border:1px solid #999999;
+  width:100%;
+  min-height: 50vh;
+  margin:5px 0;
+  padding:3px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
+}
+
+input {
+  width: 100% !important;
+}

@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FileService } from '../services/file.service';
 import { ToastComponent } from '../shared/toast/toast.component';
 import { File } from '../shared/models/file.model';
+import { getMatIconFailedToSanitizeLiteralError } from '@angular/material/icon';
+
 
 @Component({
   selector: 'app-files',
@@ -15,12 +17,16 @@ export class FilesComponent implements OnInit {
   files: File[] = [];
   isLoading = true;
   isEditing = false;
+  isViewing = false;
+  isCreating = false;
 
   constructor(private fileService: FileService,
               public toast: ToastComponent) { }
 
   ngOnInit(): void {
     this.getfiles();
+    console.log("edit : " + this.isEditing)
+    console.log("view : " + this.isViewing)
   }
 
   getfiles(): void {
@@ -31,10 +37,46 @@ export class FilesComponent implements OnInit {
     );
   }
 
+  enableViewing(file: File): void {
+    this.fileService.getFile(file).subscribe(
+      () => {
+        this.isViewing = true;
+        this.isEditing = false;
+        this.file = file;
+      },
+      error => console.log(error)
+    );
+  }
+
+  enableCreating(file: File): void {
+    this.isViewing = false;
+    this.isEditing = false;
+    this.isCreating = true;
+    this.file = new File();
+  }
+
   enableEditing(file: File): void {
     this.isEditing = true;
+    this.isViewing = false;
     this.file = file;
   }
+
+  cancelViewing(): void {
+    this.isViewing = false;
+    this.file = new File();
+    this.getfiles();
+  }
+
+  cancelCreating(): void {
+    this.isCreating = false;
+    this.getfiles();
+  }
+
+  onCancelCreatingFile(e: boolean) {
+    console.log(e);
+    this.cancelCreating();
+  }
+
 
   cancelEditing(): void {
     this.isEditing = false;
@@ -66,5 +108,4 @@ export class FilesComponent implements OnInit {
       );
     }
   }
-
 }

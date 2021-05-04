@@ -1,16 +1,46 @@
 // Angular
+
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { JwtModule } from '@auth0/angular-jwt';
 // Modules
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule } from '@angular/material/slider';
+
+//Angular Material Components
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatListModule} from '@angular/material/list';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
-import {MatTreeModule} from '@angular/material/tree';
-import { FileExplorerModule } from './file-explorer/file-explorer.module';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 // Services
 import { CatService } from './services/cat.service';
 import { CharacterService } from './services/character.service';
@@ -40,7 +70,6 @@ import { MoviesComponent } from './movies/movies.component';
 import { AddMovieFormComponent } from './add-movie-form/add-movie-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DisplayFileComponent } from './display-file/display-file.component';
-import { FoldersComponent } from './folders/folders.component';
 import { FileExplorerViewComponent } from './file-explorer-view/file-explorer-view.component';
 
 
@@ -64,8 +93,7 @@ import { FileExplorerViewComponent } from './file-explorer-view/file-explorer-vi
     AddMovieFormComponent,
     DashboardComponent,
     DisplayFileComponent,
-    FoldersComponent,
-    FileExplorerViewComponent,
+    FileExplorerViewComponent
    ],
   imports: [
     AppRoutingModule,
@@ -76,13 +104,41 @@ import { FileExplorerViewComponent } from './file-explorer-view/file-explorer-vi
         // allowedDomains: ['localhost:3000', 'localhost:4200']
       }
     }),
-    BrowserAnimationsModule,
-    MatSliderModule,
     HighlightModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatCheckboxModule,
+    MatCheckboxModule,
     MatButtonModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatStepperModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatButtonToggleModule,
+    MatChipsModule,
     MatIconModule,
-    MatTreeModule,
-    FileExplorerModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatDialogModule,
+    MatTooltipModule,
+    MatSnackBarModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule
+
   ],
   providers: [
     AuthService,

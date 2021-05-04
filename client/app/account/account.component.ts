@@ -12,6 +12,7 @@ export class AccountComponent implements OnInit {
 
   user: User;
   isLoading = true;
+  isAdmin = false;
 
   constructor(private auth: AuthService,
               public toast: ToastComponent,
