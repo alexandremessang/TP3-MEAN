@@ -14,34 +14,15 @@ import { ToastComponent } from '../shared/toast/toast.component';
 export class DisplayFileComponent implements OnInit {
 
   file = new File();
-  files: File[] = [];
   isLoading = false;
 
   constructor(private fileService: FileService,
     public toast: ToastComponent) { }
 
   ngOnInit(): void {
-    this.getFiles();
+    // alimenter le file
+    // file = this.fileService.getFile();
   }
 
-  getFiles(): void {
-    this.fileService.getFiles().subscribe(
-      data => this.files = data,
-      error => console.log(error),
-      () => this.isLoading = false
-    );
-  }
-
-  deleteFile(file: File): void {
-    if (window.confirm('Êtes-vous sûr ?')) {
-      this.fileService.deleteFile(file).subscribe(
-        () => {
-          this.files = this.files.filter(elem => elem._id !== file._id);
-          this.toast.setMessage('item deleted successfully.', 'success');
-        },
-        error => console.log(error)
-      );
-    }
-  }
 
 }

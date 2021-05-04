@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { File } from '../shared/models/file.model';
@@ -11,6 +11,11 @@ export class FileService {
 
   getFiles(): Observable<File[]> {
     return this.http.get<File[]>('/api/files');
+  }
+
+  getPublicFiles(language?: string): Observable<File[]> {
+    let lang = new HttpParams().set('language', language);
+    return this.http.get<File[]>('/api/files/public', { params: lang });
   }
 
   countFiles(): Observable<number> {

@@ -35,6 +35,7 @@
             </span>
           </div>
         </div>
+      </div>
         <!-- sidebar-header  -->
         <!-- <div class="sidebar-search">
           <div>
@@ -60,15 +61,16 @@
                 <span>Dashboard</span>
               </a>
             </li>
-            <li>
-              <a href="/files">
-                <i class="fa fa-folder"></i>
-                <span>My Files</span>
-              </a>
-            </li>
+            <div *ngIf="auth.loggedIn">
+              <li>
+                <a href="/files">
+                  <i class="fa fa-folder"></i>
+                  <span>My Files</span>
+                </a>
+              </li>
+            </div>
           </ul>
         </div>
-      </div>
     </div>
     <!-- sidebar-menu  -->
   <!-- sidebar-content  -->

@@ -42,6 +42,7 @@ function setRoutes(app): void {
 
   // Files
   router.route('/files').get(fileCtrl.getAll);
+  router.route('/files/public').get(fileCtrl.getAllPublic);
   router.route('/files/count').get(fileCtrl.count);
   router.route('/files').post(fileCtrl.insert);
   router.route('/files/:id').get(fileCtrl.get);
