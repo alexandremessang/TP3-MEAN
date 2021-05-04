@@ -30,7 +30,7 @@
             <i class="fa fa-black-tie"></i>
           </span>
         </div>
-        <select class="custom-select" name="role" [(ngModel)]="user.role" [disabled]="!auth.isAdmin">
+        <select class="custom-select" name="role" [(ngModel)]="user.role" [disabled]="!auth.isAdmin" disabled>
           <option value="" disabled>Role</option>
           <option value="user">User</option>
           <option value="admin">Admin</option>
