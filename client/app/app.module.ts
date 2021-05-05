@@ -40,6 +40,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { FileExplorerModule } from './file-explorer/file-explorer.module';
 
 // Services
 import { CatService } from './services/cat.service';
@@ -137,7 +138,8 @@ import { FileExplorerViewComponent } from './file-explorer-view/file-explorer-vi
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    FileExplorerModule
 
   ],
   providers: [

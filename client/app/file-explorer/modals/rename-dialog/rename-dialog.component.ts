@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-rename-dialog',
@@ -6,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./rename-dialog.component.scss']
 })
 export class RenameDialogComponent implements OnInit {
-  folderName:string;
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<RenameDialogComponent>) {}
 
-  ngOnInit(): void {
-  }
+  folderName: string;
 
+  ngOnInit() {}
 }

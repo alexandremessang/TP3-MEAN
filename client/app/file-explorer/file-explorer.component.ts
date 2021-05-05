@@ -1,31 +1,29 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core'
-import { Folder } from '../shared/models/folder.model'
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
+import { Observable } from 'rxjs/Observable';
 import { MatDialog } from '@angular/material/dialog';
-import { MatMenuTrigger} from '@angular/material/menu'; 
-import { NewFolderDialogComponent } from './modals/new-folder-dialog/new-folder-dialog.component'
-import { RenameDialogComponent } from './modals/rename-dialog/rename-dialog.component'
+import { NewFolderDialogComponent } from './modals/new-folder-dialog/new-folder-dialog.component';
+import { RenameDialogComponent } from './modals/rename-dialog/rename-dialog.component';
+import { Folder } from '../shared/models/folder.model';
+
 @Component({
   selector: 'file-explorer',
   templateUrl: './file-explorer.component.html',
-  styleUrls: ['./file-explorer.component.scss'],
+  styleUrls: ['./file-explorer.component.scss']
 })
 export class FileExplorerComponent {
-
   constructor(public dialog: MatDialog) {}
 
-  @Input() fileElements: Folder[]
-  @Input() canNavigateUp: string
-  @Input() path: string
+  @Input() fileElements: Folder[];
+  @Input() canNavigateUp: string;
+  @Input() path: string;
 
-  @Output() folderAdded = new EventEmitter<{ name: string }>()
-  @Output() elementRemoved = new EventEmitter<Folder>()
-  @Output() elementRenamed = new EventEmitter<Folder>()
-  @Output() elementMoved = new EventEmitter<{
-    element: Folder
-    moveTo: Folder
-  }>()
-  @Output() navigatedDown = new EventEmitter<Folder>()
-  @Output() navigatedUp = new EventEmitter()
+  @Output() folderAdded = new EventEmitter<string>();
+  @Output() elementRemoved = new EventEmitter<Folder>();
+  @Output() elementRenamed = new EventEmitter<Folder>();
+  @Output() elementMoved = new EventEmitter<{ element: Folder; moveTo: Folder }>();
+  @Output() navigatedDown = new EventEmitter<Folder>();
+  @Output() navigatedUp = new EventEmitter();
 
   deleteElement(element: Folder) {
     this.elementRemoved.emit(element);
@@ -49,7 +47,7 @@ export class FileExplorerComponent {
     let dialogRef = this.dialog.open(NewFolderDialogComponent);
     dialogRef.afterClosed().subscribe(res => {
       if (res) {
-        this.folderAdded.emit({ name: res });
+        this.folderAdded.emit(res);
       }
     });
   }
@@ -64,7 +62,7 @@ export class FileExplorerComponent {
     });
   }
 
-  openMenu(event: MouseEvent, element: Folder, viewChild: MatMenuTrigger) {
+  openMenu(event: MouseEvent, viewChild: MatMenuTrigger) {
     event.preventDefault();
     viewChild.openMenu();
   }
