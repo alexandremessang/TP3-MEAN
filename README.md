@@ -9,8 +9,6 @@
 ### Partage de fonctions ou parties de codes courramment utilisés servant comme mémo rapide à récupérer.
 
 
-# ------------------
-
 ### Couches techniques  
 
 #### Router
