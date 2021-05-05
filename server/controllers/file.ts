@@ -4,12 +4,12 @@ import BaseCtrl from './base';
 class File extends BaseCtrl {
   model = file;
 
-  // getType = function( search ) {
-  //   return search == undefined ? ""
-  //        : search == "undefined" ? ""
-  //        : search == "" ? ""
-  //        : new RegExp(search, 'i')
-  // }
+  getType = function( search ) {
+    return search == undefined ? ""
+         : search == "undefined" ? ""
+         : search == "" ? ""
+         : new RegExp(search, 'i')
+  }
 
   getAll = async (req, res) => {
     try {
@@ -29,7 +29,34 @@ class File extends BaseCtrl {
         return res.status(400).json({ error: err.message });
       }
   }
-  
+
+  getAllPublic = async (req, res) => {
+    try {
+      if(this.getType(req.query.language) !== ""){
+        const docs = await this.model.find({ language: { $eq : req.query.language }, isPublic : { $eq: true }})
+        res.status(200).json(docs);
+      }else{
+        const docs = await this.model.find({ isPublic : { $eq: true }})
+        res.status(200).json(docs);
+      }
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
+    }
+  }
+
+  getMyFiles = async (req, res) => {
+    try {
+      if(this.getType(req.query.author) !== ""){
+        const docs = await this.model.find({ author: { $eq : req.query.author }})
+        res.status(200).json(docs);
+      }else{
+        const docs = await this.model.find({ isPublic : { $eq: true }})
+        res.status(200).json(docs);
+      }
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
+    }
+  }
 }
 
 export default File;

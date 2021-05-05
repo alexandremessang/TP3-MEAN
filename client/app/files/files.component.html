@@ -31,7 +31,7 @@
           <tbody *ngIf="!isEditing">
             <tr *ngFor="let file of files">
               <td>{{file.title}}</td>
-              <td>récupérer le nom à partir de cet id (populate) : {{file.author}}</td>
+              <td>{{file.author}}</td>
               <td>{{file.language}}</td>
               <td *ngIf="isEditing">{{file.content}}</td>
               <td>{{file.isPublic}}</td>
@@ -94,8 +94,16 @@
               </div>
               <div class="col-12 col-lg-3 text-center">
                 <label for="language" class="justify-content-start">Language</label>
-                <input id="language" class="form-control mr-2" type="text" name="language"
-                           [(ngModel)]="file.language" placeholder="Language" required>
+                <select class="custom-select" name="Language" [(ngModel)]="file.language" required>
+                  <option value="" disabled>Language</option>
+                  <option value="javascript">javascript</option>
+                  <option value="html">html</option>
+                  <option value="css">css</option>
+                  <option value="java">java</option>
+                  <option value="c#">c#</option>
+                  <option value="c">c</option>
+                  <option value="c++">c++</option>
+                </select>
               </div>
               <div class="col-12 col-lg-3 text-center">
                 <label for="ispublic">Public</label>

@@ -23,12 +23,20 @@
               </div>
               <div class="col-12 col-lg-3">
                 <label for="language" class="justify-content-start">Language</label>
-                <input class="form-control mr-2" type="text" id="language" name="language"
-                  formControlName="language" placeholder="Language">
+                <select class="custom-select" name="language" formControlName="language">
+                  <option value="" disabled>Language</option>
+                  <option value="javascript">javascript</option>
+                  <option value="html">html</option>
+                  <option value="css">css</option>
+                  <option value="java">java</option>
+                  <option value="c#">c#</option>
+                  <option value="c">c</option>
+                  <option value="c++">c++</option>
+                </select>
               </div>
               <div class="col-12 col-lg-3 text-center">
                 <label class="form-check-label" for="IsPublic">Public</label>
-                <mat-slide-toggle [(ngModel)]="isChecked" id="ispublic" name="public" class="mt-2"></mat-slide-toggle>
+                <mat-slide-toggle formControlName="isPublic" id="ispublic" name="public" class="mt-2"></mat-slide-toggle>
               </div>
               <div class="col-12 mt-5">
                 <label for="content" class="justify-content-start">Content</label>
