@@ -1,0 +1,33 @@
+<!-- <h1 mat-dialog-title>Import a file</h1>-->
+<mat-tab-group dynamicHeight mat-align-tabs="center">
+  <mat-tab label="My Files">
+    <mat-dialog-content>
+        <mat-selection-list #list [(ngModel)]="selectedFiles" (ngModelChange)="onNgModelChange($event)">
+          <mat-list-option *ngFor="let myFile of myFiles" [value]="myFile">
+            {{myFile.title}}
+          </mat-list-option>
+        </mat-selection-list>
+    </mat-dialog-content>
+    
+    <mat-dialog-actions>
+      <button mat-raised-button mat-dialog-close>Cancel</button>
+      <button mat-raised-button [mat-dialog-close]="selectedFiles" color="primary">
+        OK
+      </button>
+    </mat-dialog-actions>
+  </mat-tab>
+  <mat-tab label="Public Files">
+    <mat-dialog-content>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Folder Name" [(ngModel)]="folderName" />
+      </mat-form-field>
+    </mat-dialog-content>
+    
+    <mat-dialog-actions>
+      <button mat-raised-button mat-dialog-close>Cancel</button>
+      <button mat-raised-button [mat-dialog-close]="folderName" color="primary">
+        OK
+      </button>
+    </mat-dialog-actions>
+  </mat-tab>
+</mat-tab-group>

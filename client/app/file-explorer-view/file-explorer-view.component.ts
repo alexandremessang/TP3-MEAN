@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Folder } from '../shared/models/folder.model';
 import { FolderService } from '../services/folder.service';
 import { File } from '../shared/models/file.model';
-
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { User } from '../shared/models/user.model';
 
 @Component({
   selector: 'app-file-explorer-view',
@@ -12,15 +13,25 @@ import { File } from '../shared/models/file.model';
 export class FileExplorerViewComponent implements OnInit {
   public fileElements: Folder[];
 
-  constructor(public fileService: FolderService) {}
+  constructor(public fileService: FolderService, private jwtHelper: JwtHelperService,) {}
 
   currentRoot: Folder;
   currentPath: string;
+  currentUser:any;
+  rootId: string;
   canNavigateUp = false;
 
+
   ngOnInit() {
-    this.fileElements = [];
-    this.fileService.getFolder("60926cd2d07a4db7d832af3c").subscribe(data => {
+    const token = localStorage.getItem('token');
+    if(token) {
+      this.currentUser = this.jwtHelper.decodeToken(token).user;
+      this.rootId = this.currentUser.rootId;
+    } else {
+      this.rootId = "60926cd2d07a4db7d832af3c";
+    }
+
+    this.fileService.getFolder(this.rootId).subscribe(data => {
       this.processData(data);
       this.currentRoot = data;
     });

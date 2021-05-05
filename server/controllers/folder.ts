@@ -38,8 +38,8 @@ class Folder extends BaseCtrl {
         }
       } else {
         if(req.body.isFolder) {
-          // const newFolder = await new this.model(req.body).save();
-          const obj = await this.model.findOneAndUpdate({_id: id}, {$push: { folders: req.body._id}}, { useFindAndModify: false });
+          const newFolder = await new this.model(req.body).save();
+          const obj = await this.model.findOneAndUpdate({_id: id}, {$push: { folders: newFolder._id}}, { useFindAndModify: false });
           console.log(obj);
           res.status(201).json(obj);
         } else {

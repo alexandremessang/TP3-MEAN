@@ -6,6 +6,7 @@ import { NewFolderDialogComponent } from './modals/new-folder-dialog/new-folder-
 import { RenameDialogComponent } from './modals/rename-dialog/rename-dialog.component';
 import { Folder } from '../shared/models/folder.model';
 import { ImportFileDialogComponent } from './modals/import-file-dialog/import-file-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'file-explorer',
@@ -13,7 +14,7 @@ import { ImportFileDialogComponent } from './modals/import-file-dialog/import-fi
   styleUrls: ['./file-explorer.component.scss']
 })
 export class FileExplorerComponent {
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, public router:Router) {}
 
   @Input() fileElements: Folder[];
   @Input() canNavigateUp: string;
@@ -29,6 +30,11 @@ export class FileExplorerComponent {
 
   deleteElement(element: Folder) {
     this.elementRemoved.emit(element);
+  }
+
+  
+  fileView(id:string) {
+    this.router.navigate(['display-file/'+id]);
   }
 
   navigate(element: Folder) {
