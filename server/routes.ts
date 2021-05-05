@@ -7,6 +7,8 @@ import FileCtrl from './controllers/file';
 import MovieCtrl from './controllers/movie';
 import UserCtrl from './controllers/user';
 
+//import AuthCheck from './middlewares/auth.middleware';
+
 function setRoutes(app): void {
   const router = express.Router();
   const catCtrl = new CatCtrl();
@@ -15,6 +17,10 @@ function setRoutes(app): void {
   const fileCtrl = new FileCtrl();
   const movieCtrl = new MovieCtrl();
   const userCtrl = new UserCtrl();
+
+  //const authMiddleware = require('./middlewares/auth.middleware');
+
+ //app.use(AuthCheck);
 
   // Cats
   router.route('/cats').get(catCtrl.getAll);
@@ -41,7 +47,7 @@ function setRoutes(app): void {
   router.route('/folders/:id').delete(folderCtrl.delete);
 
   // Files
-  router.route('/files').get(fileCtrl.getAll);
+  router.get('/files', /*AuthCheck,*/ fileCtrl.getAll);
   router.route('/files/public').get(fileCtrl.getAllPublic);
   router.route('/files/me').get(fileCtrl.getMyFiles);
   router.route('/files/count').get(fileCtrl.count);

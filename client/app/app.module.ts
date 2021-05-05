@@ -71,6 +71,7 @@ import { MoviesComponent } from './movies/movies.component';
 import { AddMovieFormComponent } from './add-movie-form/add-movie-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DisplayFileComponent } from './display-file/display-file.component';
+import { EditFileComponent } from './edit-file/edit-file.component';
 import { FileExplorerViewComponent } from './file-explorer-view/file-explorer-view.component';
 
 
@@ -94,6 +95,7 @@ import { FileExplorerViewComponent } from './file-explorer-view/file-explorer-vi
     AddMovieFormComponent,
     DashboardComponent,
     DisplayFileComponent,
+    EditFileComponent,
     FileExplorerViewComponent
    ],
   imports: [

@@ -18,6 +18,7 @@ import { AdminComponent } from './admin/admin.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DisplayFileComponent } from './display-file/display-file.component';
+import { EditFileComponent } from './edit-file/edit-file.component';
 // import { FileExplorerComponent } from './file-explorer/file-explorer.component';
 import { FileExplorerViewComponent } from './file-explorer-view/file-explorer-view.component';
 
@@ -33,7 +34,8 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
   { path: 'account', component: AccountComponent, canActivate: [AuthGuardLogin] },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuardAdmin] },
-  { path: 'display-file', component: DisplayFileComponent },
+  { path: 'display-file/:id', component: DisplayFileComponent },
+  { path: 'edit-file/:id', component: EditFileComponent },
   { path: 'notfound', component: NotFoundComponent },
   { path: '**', redirectTo: '/notfound' },
 ];

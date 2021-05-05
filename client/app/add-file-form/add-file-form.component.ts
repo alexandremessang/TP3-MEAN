@@ -34,6 +34,7 @@ export class AddFileFormComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.file.isPublic)
+    console.log(this.auth.currentUser)
     this.addFileForm = this.formBuilder.group({
       title: this.title,
       author: this.auth.currentUser.username,

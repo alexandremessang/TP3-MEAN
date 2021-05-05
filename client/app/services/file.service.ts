@@ -31,9 +31,13 @@ export class FileService {
     return this.http.post<File>('/api/files', file);
   }
 
-  getFile(file: File): Observable<File> {
-    return this.http.get<File>(`/api/files/${file._id}`);
+  getFile(id: string): Observable<File> {
+    return this.http.get<File>(`/api/files/${id}`);
   }
+
+  // getFileById(id: string): Observable<File> {
+  //   return this.http.get<File>(`/api/files/${id}`);
+  // }
 
   editFile(file: File): Observable<any> {
     return this.http.put(`/api/files/${file._id}`, file, { responseType: 'text' });
