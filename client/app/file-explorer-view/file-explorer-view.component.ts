@@ -3,7 +3,6 @@ import { Folder } from '../shared/models/folder.model';
 import { FolderService } from '../services/folder.service';
 import { File } from '../shared/models/file.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { User } from '../shared/models/user.model';
 
 @Component({
   selector: 'app-file-explorer-view',
@@ -13,7 +12,7 @@ import { User } from '../shared/models/user.model';
 export class FileExplorerViewComponent implements OnInit {
   public fileElements: Folder[];
 
-  constructor(public fileService: FolderService, private jwtHelper: JwtHelperService,) {}
+  constructor(public folderService: FolderService, private jwtHelper: JwtHelperService,) {}
 
   currentRoot: Folder;
   currentPath: string;
@@ -31,7 +30,7 @@ export class FileExplorerViewComponent implements OnInit {
       this.rootId = "60926cd2d07a4db7d832af3c";
     }
 
-    this.fileService.getFolder(this.rootId).subscribe(data => {
+    this.folderService.getFolder(this.rootId).subscribe(data => {
       this.processData(data);
       this.currentRoot = data;
     });
@@ -55,8 +54,8 @@ export class FileExplorerViewComponent implements OnInit {
       isPublic: false,
     }
 
-    this.fileService.addFolder(this.currentRoot._id, folder).subscribe(data => console.log(data));
-    // this.fileService.getFolder(this.currentRoot._id).subscribe(data => {
+    this.folderService.addFolder(this.currentRoot._id, folder).subscribe(data => console.log(data));
+    // this.folderService.getFolder(this.currentRoot._id).subscribe(data => {
     //   this.fileElements = data.folders;
     // })
     this.updateFileElementQuery();
@@ -64,21 +63,21 @@ export class FileExplorerViewComponent implements OnInit {
 
   importFile(files: File[]) {
     for(const file of files) {
-      this.fileService.addFolder(this.currentRoot._id, file).subscribe(data => console.log(data));
+      this.folderService.addFolder(this.currentRoot._id, file).subscribe(data => console.log(data));
     }
-    // this.fileService.getFolder(this.currentRoot._id).subscribe(data => {
+    // this.folderService.getFolder(this.currentRoot._id).subscribe(data => {
     //   this.fileElements = data.folders;
     // })
     this.updateFileElementQuery();
   }
 
   removeElement(element: Folder) {
-    this.fileService.deleteFolder(element._id).subscribe();
+    this.folderService.deleteFolder(element._id).subscribe();
     this.updateFileElementQuery();
   }
 
   navigateToFolder(element: Folder) {
-    this.fileService.getFolder(element._id).subscribe(data => {
+    this.folderService.getFolder(element._id).subscribe(data => {
       this.processData(data);
     })
     this.currentRoot = element;
@@ -90,7 +89,7 @@ export class FileExplorerViewComponent implements OnInit {
     if(this.currentRoot && this.currentRoot.parent === "60926cd2d07a4db7d832af3c") {
       this.canNavigateUp = false;
     }
-    this.fileService.getFolder(this.currentRoot.parent).subscribe(data =>  {
+    this.folderService.getFolder(this.currentRoot.parent).subscribe(data =>  {
       this.currentRoot = data;
       this.processData(data);
     });
@@ -99,17 +98,17 @@ export class FileExplorerViewComponent implements OnInit {
 
   moveElement(event: { element: Folder; moveTo: Folder }) {
     event.element.parent = event.moveTo._id;
-    this.fileService.updateFolder(event.element);
+    this.folderService.updateFolder(event.element);
     this.updateFileElementQuery();
   }
 
   renameElement(element: Folder) {
-    this.fileService.updateFolder(element);
+    this.folderService.updateFolder(element);
     this.updateFileElementQuery();
   }
 
   updateFileElementQuery() {
-    this.fileService.getFolder(this.currentRoot._id).subscribe(data =>  {
+    this.folderService.getFolder(this.currentRoot._id).subscribe(data =>  {
       this.processData(data);
     });
   }
