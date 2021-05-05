@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Folder } from '../shared/models/folder.model';
@@ -22,8 +22,9 @@ export class FolderService {
     return this.http.post<Folder>('/api/folders', folder);
   }
 
-  addFolder(folder: Folder): Observable<Folder> {
-    return this.http.post<Folder>(`/api/folders`, folder);
+  addFolder(id:string, element: any): Observable<Folder> {
+    let _id = new HttpParams().set('id', id);
+    return this.http.post<Folder>(`/api/folders`,element, {params: _id });
   }
 
   getFolder(id: string): Observable<Folder> {

@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { NewFolderDialogComponent } from './modals/new-folder-dialog/new-folder-dialog.component';
 import { RenameDialogComponent } from './modals/rename-dialog/rename-dialog.component';
 import { Folder } from '../shared/models/folder.model';
+import { ImportFileDialogComponent } from './modals/import-file-dialog/import-file-dialog.component';
 
 @Component({
   selector: 'file-explorer',
@@ -19,6 +20,7 @@ export class FileExplorerComponent {
   @Input() path: string;
 
   @Output() folderAdded = new EventEmitter<string>();
+  @Output() fileImported = new EventEmitter<File[]>();
   @Output() elementRemoved = new EventEmitter<Folder>();
   @Output() elementRenamed = new EventEmitter<Folder>();
   @Output() elementMoved = new EventEmitter<{ element: Folder; moveTo: Folder }>();
@@ -51,6 +53,17 @@ export class FileExplorerComponent {
       }
     });
   }
+
+  openImportFileDialog() {
+    let dialogRef = this.dialog.open(ImportFileDialogComponent);
+    dialogRef.afterClosed().subscribe(res => {
+      if (res) {
+        console.log(res);
+        this.fileImported.emit(res);
+      }
+    });
+  }
+
 
   openRenameDialog(element: Folder) {
     let dialogRef = this.dialog.open(RenameDialogComponent);

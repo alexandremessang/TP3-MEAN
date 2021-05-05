@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Folder } from '../shared/models/folder.model';
 import { FolderService } from '../services/folder.service';
+import { File } from '../shared/models/file.model';
 
 
 @Component({
@@ -18,10 +19,21 @@ export class FileExplorerViewComponent implements OnInit {
   canNavigateUp = false;
 
   ngOnInit() {
+    this.fileElements = [];
     this.fileService.getFolder("60926cd2d07a4db7d832af3c").subscribe(data => {
-      this.fileElements = data.folders;
+      this.processData(data);
       this.currentRoot = data;
     });
+  }
+
+  processData(data: Folder) {
+    this.fileElements = [];
+    for(const folder of data.folders) {
+      this.fileElements.push(folder);
+    }
+    for(const file of data.files) {
+      this.fileElements.push(file);
+    }
   }
 
   addFolder(name: string) {
@@ -32,7 +44,17 @@ export class FileExplorerViewComponent implements OnInit {
       isPublic: false,
     }
 
-    this.fileService.addFolder(folder).subscribe(data => console.log(data));
+    this.fileService.addFolder(this.currentRoot._id, folder).subscribe(data => console.log(data));
+    // this.fileService.getFolder(this.currentRoot._id).subscribe(data => {
+    //   this.fileElements = data.folders;
+    // })
+    this.updateFileElementQuery();
+  }
+
+  importFile(files: File[]) {
+    for(const file of files) {
+      this.fileService.addFolder(this.currentRoot._id, file).subscribe(data => console.log(data));
+    }
     // this.fileService.getFolder(this.currentRoot._id).subscribe(data => {
     //   this.fileElements = data.folders;
     // })
@@ -46,7 +68,7 @@ export class FileExplorerViewComponent implements OnInit {
 
   navigateToFolder(element: Folder) {
     this.fileService.getFolder(element._id).subscribe(data => {
-      this.fileElements = data.folders;
+      this.processData(data);
     })
     this.currentRoot = element;
     this.currentPath = this.pushToPath(this.currentPath, element.name);
@@ -54,9 +76,12 @@ export class FileExplorerViewComponent implements OnInit {
   }
 
   navigateUp() {
+    if(this.currentRoot && this.currentRoot.parent === "60926cd2d07a4db7d832af3c") {
+      this.canNavigateUp = false;
+    }
     this.fileService.getFolder(this.currentRoot.parent).subscribe(data =>  {
       this.currentRoot = data;
-      this.fileElements = data.folders;
+      this.processData(data);
     });
     this.currentPath = this.popFromPath(this.currentPath);
   }
@@ -74,13 +99,7 @@ export class FileExplorerViewComponent implements OnInit {
 
   updateFileElementQuery() {
     this.fileService.getFolder(this.currentRoot._id).subscribe(data =>  {
-      this.fileElements = [];
-      for(const folder of data.folders) {
-        this.fileElements.push(folder);
-      }
-      for(const file of data.files) {
-        this.fileElements.push(file);
-      }
+      this.processData(data);
     });
   }
 

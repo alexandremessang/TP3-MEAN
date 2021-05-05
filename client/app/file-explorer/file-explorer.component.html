@@ -11,13 +11,15 @@
         <mat-grid-tile *ngFor="let element of fileElements" class=file-or-folder>
           <span [matMenuTriggerFor]="rootMenu" [matMenuTriggerData]="{element: element}" #menuTrigger="matMenuTrigger"></span>
           <div fxLayout="column" fxLayoutAlign="space-between center" (click)="navigate(element)" (contextmenu)="openMenu($event, menuTrigger)">
-            <mat-icon color="primary" class="file-or-folder-icon pointer" *ngIf="element.isFolder">folder</mat-icon>
-            <mat-icon color="primary" class="file-or-folder-icon pointer" *ngIf="!element.isFolder">insert_drive_file</mat-icon>
-            <span>{{element.name}}</span>
+            <mat-icon color="primary" class="file-or-folder-icon pointer" *ngIf="element.isFolder; else fileIcon">folder</mat-icon>
+            <span *ngIf="element.isFolder; else fileTitle">{{element.name}}</span>
+            <ng-template #fileIcon><mat-icon color="primary" class="file-or-folder-icon pointer">insert_drive_file</mat-icon></ng-template>
+            <ng-template #fileTitle><a href="files/{{element._id}}">{{element.title}}</a></ng-template>
+            
           </div>
         </mat-grid-tile>
         <mat-grid-tile class=file-or-folder>
-          <mat-icon class="pointer" (click)="openNewFolderDialog()">add_new_folder</mat-icon>
+          <mat-icon class="pointer" (click)="openImportFileDialog()">add_new_folder</mat-icon>
         </mat-grid-tile>
       </mat-grid-list>
     </div>

@@ -14,6 +14,11 @@ import { FormsModule } from '@angular/forms';
 import { RenameDialogComponent } from './modals/rename-dialog/rename-dialog.component';
 import { FileExplorerComponent } from './file-explorer.component';
 import { FolderService } from '../services/folder.service';
+import { ImportFileDialogComponent } from './modals/import-file-dialog/import-file-dialog.component';
+import { FileService } from '../services/file.service';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatListModule } from '@angular/material/list';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   imports: [
@@ -27,11 +32,14 @@ import { FolderService } from '../services/folder.service';
     MatDialogModule,
     MatInputModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTabsModule,
+    MatListModule,
+    MatBadgeModule
   ],
-  declarations: [FileExplorerComponent, NewFolderDialogComponent, RenameDialogComponent],
+  declarations: [FileExplorerComponent, NewFolderDialogComponent, RenameDialogComponent, ImportFileDialogComponent],
   exports: [FileExplorerComponent],
-  entryComponents: [NewFolderDialogComponent, RenameDialogComponent],
-  providers: [FolderService]
+  entryComponents: [NewFolderDialogComponent, RenameDialogComponent, ImportFileDialogComponent],
+  providers: [FolderService, FileService]
 })
 export class FileExplorerModule {}
