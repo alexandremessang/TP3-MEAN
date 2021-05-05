@@ -12,8 +12,6 @@
 # ------------------
 
 ### Couches techniques  
-#  
-#  
 
 #### Router
 ###### Contient les différentes routes protégées par un Middleware d'authentification.
