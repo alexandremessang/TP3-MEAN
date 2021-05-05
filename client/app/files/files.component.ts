@@ -40,7 +40,7 @@ export class FilesComponent implements OnInit {
   }
 
   enableViewing(file: File): void {
-    this.fileService.getFile(file).subscribe(
+    this.fileService.getFile(file._id).subscribe(
       () => {
         this.isViewing = true;
         this.isEditing = false;

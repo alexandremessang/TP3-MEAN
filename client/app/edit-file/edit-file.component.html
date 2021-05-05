@@ -1,0 +1,62 @@
+<!-- Edit view -->
+<div *ngIf="!isLoading">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 text-left">
+        <button class="back-btn" (click)="cancelEditing()">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+      </div>
+    </div>
+    <div class="col-12">
+      <h3>Edit file</h3>
+      <div class="row">
+        <div class="col-12 mt-lg-5">
+          <form class="form-inline" #form="ngForm" (ngSubmit)="editfile(file)">
+            <div class="row">
+              <div class="col-12">
+                <label for="author" class="justify-content-start">Author</label>
+                <!-- User logged (hidden) -->
+                <input id="author" class="form-control mr-2" type="text" name="author"
+                          [(ngModel)]="file.author" placeholder="Author" value="{{file.author}}" disabled>
+              </div>
+              <div class="col-12 col-lg-6">
+                <label for="title" class="justify-content-start">Title</label>
+                <input id="title" class="form-control mr-2" type="text" name="title"
+                [(ngModel)]="file.title" placeholder="Title" required>
+              </div>
+              <div class="col-12 col-lg-3 text-center">
+                <label for="language" class="justify-content-start">Language</label>
+                <select class="custom-select" name="Language" [(ngModel)]="file.language" required>
+                  <option value="" disabled>Language</option>
+                  <option value="javascript">javascript</option>
+                  <option value="html">html</option>
+                  <option value="css">css</option>
+                  <option value="java">java</option>
+                  <option value="c#">c#</option>
+                  <option value="c">c</option>
+                  <option value="c++">c++</option>
+                </select>
+              </div>
+              <div class="col-12 col-lg-3 text-center">
+                <label for="ispublic">Public</label>
+                <mat-slide-toggle [(ngModel)]="file.isPublic" id="ispublic" name="isPublic" class="mt-2"></mat-slide-toggle>
+              </div>
+              <div class="col-12 mt-5">
+                <label for="content" class="justify-content-start">Content</label>
+                <textarea class="form-control mr-2 code-input" name="content"
+                           [(ngModel)]="file.content" placeholder="Content..." required>
+                    </textarea>
+              </div>
+              <div class="col-12 text-right mt-3">
+                <button class="save-button mr-2" type="submit" [disabled]="!form.form.valid">
+                  <!-- <i class="fa fa-floppy-o"></i>--> Save
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

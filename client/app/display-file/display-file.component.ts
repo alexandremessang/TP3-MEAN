@@ -1,28 +1,39 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FileService } from '../services/file.service';
 import { File } from '../shared/models/file.model';
 import { ToastComponent } from '../shared/toast/toast.component';
 
 @Component({
   selector: 'app-display-file',
-  template: `
-    <ngx-prism
-      [language] = "file.language"
-    >{{file.content}}</ngx-prism>`,
+  templateUrl: './display-file.component.html',
   styleUrls: ['./display-file.component.scss']
 })
 export class DisplayFileComponent implements OnInit {
 
   file = new File();
-  isLoading = false;
+  isLoading = true;
+  isEditing = false;
 
   constructor(private fileService: FileService,
-    public toast: ToastComponent) { }
+    public toast: ToastComponent,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
-  ngOnInit(): void {
-    // alimenter le file
-    // file = this.fileService.getFile();
-  }
+    ngOnInit(): void {
+      this.getFile(this.route.snapshot.paramMap.get('id'));
+    }
 
+    getFile(id:any): void {
+      this.fileService.getFile(id)
+      .subscribe(
+        data => this.file = data,
+        error => console.log(error),
+        () => this.isLoading = false
+      );
+    }
 
+    cancelViewing(): void {
+      this.router.navigate(['/files']);
+    }
 }
