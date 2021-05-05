@@ -11,7 +11,7 @@
           </span>
         </div>
         <input class="form-control" type="email" name="email"
-               formControlName="email" placeholder="Email" autofocus>
+               formControlName="email" placeholder="Email" autofocus style="width: auto !important;">
       </div>
       <div class="input-group" [ngClass]="setClassPassword()">
         <div class="input-group-prepend">
@@ -20,7 +20,7 @@
           </span>
         </div>
         <input class="form-control" type="password" name="password"
-               formControlName="password" placeholder="Password">
+               formControlName="password" placeholder="Password" style="width: auto !important;">
       </div>
       <button class="btn btn-primary mt-2" type="submit" [disabled]="!loginForm.valid">
         <i class="fa fa-sign-in"></i> Login

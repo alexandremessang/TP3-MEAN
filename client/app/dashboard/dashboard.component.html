@@ -1,12 +1,25 @@
 
-<div class="container-fluid pt-3">
+<div class="container-fluid pt-3" *ngIf="!isLoading && !isViewing">
   <div class="row">
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="code-card">
+    <label for="language" class="justify-content-start">Language</label>
+    <select class="custom-select" #selectLanguage name="language" (change)="filterByLanguage(selectLanguage.value)">
+      <option value="">Select a language</option>
+      <option value="javascript">javascript</option>
+      <option value="html">html</option>
+      <option value="css">css</option>
+      <option value="java">java</option>
+      <option value="c#">c#</option>
+      <option value="c">c</option>
+      <option value="c++">c++</option>
+    </select>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4" *ngFor="let element of files">
+      <div class="code-card" (click)="enableViewing(element)">
         <div class="row">
           <div class="col-12">
             <div class="row mx-0">
-              <div class="col-10">
+              <div class="col-8">
                 <div class="row">
                   <div class="col-3 m-auto">
                     <div class="avatar-card text-center">
@@ -15,100 +28,22 @@
                     </div>
                   </div>
                   <div class="col-9 m-auto">
-                    <h6>John Doe</h6>
+                    <h6>{{element.author}}</h6>
                   </div>
                 </div>
               </div>
-              <div class="col-2 m-auto">
-                <h5>JS</h5>
+              <div class="col-4 m-auto">
+                <h5>{{element.language}}</h5>
               </div>
             </div>
           </div>
           <div class="col-12 mt-3">
             <div class="row mx-0">
               <div class="col-10 m-auto">
-                <h5>The ultimate function</h5>
+                <h5>{{element.title}}</h5>
               </div>
               <div class="col-1 like-card m-auto">
-                <i class="fas fa-thumbs-up"></i>
-              </div>
-              <div class="col-1 download-card m-auto">
-                <i class="fas fa-cloud-download-alt"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="code-card">
-        <div class="row">
-          <div class="col-12">
-            <div class="row mx-0">
-              <div class="col-10">
-                <div class="row">
-                  <div class="col-3 m-auto">
-                    <div class="avatar-card text-center">
-                      <!-- Default  -->
-                      <i class="fas fa-user"></i>
-                    </div>
-                  </div>
-                  <div class="col-9 m-auto">
-                    <h6>John Doe</h6>
-                  </div>
-                </div>
-              </div>
-              <div class="col-2 m-auto">
-                <h5>JS</h5>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 mt-3">
-            <div class="row mx-0">
-              <div class="col-10 m-auto">
-                <h5>The ultimate function</h5>
-              </div>
-              <div class="col-1 like-card m-auto">
-                <i class="fas fa-thumbs-up"></i>
-              </div>
-              <div class="col-1 download-card m-auto">
-                <i class="fas fa-cloud-download-alt"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="code-card">
-        <div class="row">
-          <div class="col-12">
-            <div class="row mx-0">
-              <div class="col-10">
-                <div class="row">
-                  <div class="col-3 m-auto">
-                    <div class="avatar-card text-center">
-                      <!-- Default  -->
-                      <i class="fas fa-user"></i>
-                    </div>
-                  </div>
-                  <div class="col-9 m-auto">
-                    <h6>John Doe</h6>
-                  </div>
-                </div>
-              </div>
-              <div class="col-2 m-auto">
-                <h5>JS</h5>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 mt-3">
-            <div class="row mx-0">
-              <div class="col-10 m-auto">
-                <h5>The ultimate function</h5>
-              </div>
-              <div class="col-1 like-card m-auto">
+                {{element.likes}}
                 <i class="fas fa-thumbs-up"></i>
               </div>
               <div class="col-1 download-card m-auto">
@@ -122,4 +57,27 @@
   </div>
 </div>
 
-
+<!-- Single view -->
+<div *ngIf="!isLoading && isViewing">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 text-left">
+        <button class="back-btn" (click)="cancelViewing()">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+      </div>
+      <div class="col-4">
+        <h3 class="single-view-label">{{file.author}}</h3>
+      </div>
+      <div class="col-6">
+        <h5 class="single-view-label">{{file.title}}</h5>
+      </div>
+      <div class="col-2 text-center">
+        <h5 class="language-badge">{{file.language}}</h5>
+      </div>
+      <div class="col-12 mt-5">
+        <pre><code [highlight]="file.content"></code></pre>
+      </div>
+    </div>
+  </div>
+</div>
