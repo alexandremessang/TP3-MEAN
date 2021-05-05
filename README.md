@@ -11,19 +11,19 @@
 ### Architecture
 ###### Design pattern composite.
 
-### Couches techniques  
-
+### Couches techniques Back
 #### Router
 ###### Contient les différentes routes protégées par un Middleware d'authentification.
   
 #### Controller 
 ###### Fait appel au service et renvoie une réponse.
 
-#### Service
-###### Envoie les appels api et permet de se logger via token et localStorage.
-
 #### Model 
 ###### Définit les schémas de données.
+
+### Couches techniques Front
+#### Service
+###### Envoie les appels api et permet de se logger via token et localStorage.
 
 #### Component
 ##### Folder 
