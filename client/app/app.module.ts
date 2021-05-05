@@ -69,6 +69,7 @@ import { MoviesComponent } from './movies/movies.component';
 import { AddMovieFormComponent } from './add-movie-form/add-movie-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DisplayFileComponent } from './display-file/display-file.component';
+import { EditFileComponent } from './edit-file/edit-file.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { DisplayFileComponent } from './display-file/display-file.component';
     MoviesComponent,
     AddMovieFormComponent,
     DashboardComponent,
-    DisplayFileComponent
+    DisplayFileComponent,
+    EditFileComponent
    ],
   imports: [
     AppRoutingModule,

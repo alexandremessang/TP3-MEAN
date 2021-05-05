@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit {
   }
 
   enableViewing(file: File): void {
-    this.fileService.getFile(file).subscribe(
+    this.fileService.getFile(file._id).subscribe(
       () => {
         this.isViewing = true;
         this.file = file;
