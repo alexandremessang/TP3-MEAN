@@ -61,10 +61,16 @@
                 <span matTooltip="All of the public files">Dashboard</span>
               </a>
             </li>
+            <li>
+              <a href="/folders">
+                <i class="fa fa-folder"></i>
+                <span matTooltip="All of the public folders">Folders</span>
+              </a>
+            </li>
             <div *ngIf="auth.loggedIn">
               <li>
                 <a href="/files">
-                  <i class="fa fa-folder"></i>
+                  <i class="fa fa-file"></i>
                   <span matTooltip="Your files">My Files</span>
                 </a>
               </li>
