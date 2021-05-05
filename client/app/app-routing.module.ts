@@ -19,12 +19,15 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DisplayFileComponent } from './display-file/display-file.component';
 import { EditFileComponent } from './edit-file/edit-file.component';
+// import { FileExplorerComponent } from './file-explorer/file-explorer.component';
+import { FileExplorerViewComponent } from './file-explorer-view/file-explorer-view.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'cats', component: CatsComponent },
   { path: 'characters', component: CharactersComponent },
   { path: 'files', component: FilesComponent },
+  { path: 'folders', component: FileExplorerViewComponent },
   { path: 'movies', component: MoviesComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },

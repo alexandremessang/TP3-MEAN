@@ -40,11 +40,13 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { FileExplorerModule } from './file-explorer/file-explorer.module';
 
 // Services
 import { CatService } from './services/cat.service';
 import { CharacterService } from './services/character.service';
 import { FileService } from './services/file.service';
+import { FolderService } from './services/folder.service';
 import { MovieService } from './services/movie.service';
 import { UserService } from './services/user.service';
 import { AuthService } from './services/auth.service';
@@ -70,6 +72,8 @@ import { AddMovieFormComponent } from './add-movie-form/add-movie-form.component
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DisplayFileComponent } from './display-file/display-file.component';
 import { EditFileComponent } from './edit-file/edit-file.component';
+import { FileExplorerViewComponent } from './file-explorer-view/file-explorer-view.component';
+
 
 @NgModule({
   declarations: [
@@ -91,7 +95,8 @@ import { EditFileComponent } from './edit-file/edit-file.component';
     AddMovieFormComponent,
     DashboardComponent,
     DisplayFileComponent,
-    EditFileComponent
+    EditFileComponent,
+    FileExplorerViewComponent
    ],
   imports: [
     AppRoutingModule,
@@ -135,7 +140,8 @@ import { EditFileComponent } from './edit-file/edit-file.component';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    FileExplorerModule
 
   ],
   providers: [
@@ -145,6 +151,7 @@ import { EditFileComponent } from './edit-file/edit-file.component';
     CatService,
     CharacterService,
     FileService,
+    FolderService,
     MovieService,
     UserService,
     {
