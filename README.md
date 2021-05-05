@@ -6,10 +6,15 @@
 
 ## Le projet
 
-### Partage de fonctions ou parties de codes courramment utilisés servant comme mémo rapide à récupérer.
+
+#### Partage de fonctions ou parties de codes courramment utilisés servant comme mémo rapide à récupérer.
+
+#  
 
 ### Architecture
 ###### Design pattern composite.
+
+#  
 
 ### Couches techniques Back
 #### Router
@@ -20,6 +25,8 @@
 
 #### Model 
 ###### Définit les schémas de données.
+
+#  
 
 ### Couches techniques Front
 #### Service
