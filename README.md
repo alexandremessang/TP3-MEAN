@@ -8,6 +8,8 @@
 
 ### Partage de fonctions ou parties de codes courramment utilisés servant comme mémo rapide à récupérer.
 
+### Architecture
+###### Design pattern composite.
 
 ### Couches techniques  
 
