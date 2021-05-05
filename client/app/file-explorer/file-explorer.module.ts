@@ -14,7 +14,6 @@ import { FormsModule } from '@angular/forms';
 import { RenameDialogComponent } from './modals/rename-dialog/rename-dialog.component';
 import { FileExplorerComponent } from './file-explorer.component';
 import { FolderService } from '../services/folder.service';
-import { FolderFrontService } from '../services/front.folder.service';
 
 @NgModule({
   imports: [
@@ -33,6 +32,6 @@ import { FolderFrontService } from '../services/front.folder.service';
   declarations: [FileExplorerComponent, NewFolderDialogComponent, RenameDialogComponent],
   exports: [FileExplorerComponent],
   entryComponents: [NewFolderDialogComponent, RenameDialogComponent],
-  providers: [FolderService, FolderFrontService]
+  providers: [FolderService]
 })
 export class FileExplorerModule {}
