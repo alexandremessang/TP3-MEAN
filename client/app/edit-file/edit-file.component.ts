@@ -33,7 +33,7 @@ export class EditFileComponent implements OnInit {
   }
 
   cancelEditing(): void {
-    this.router.navigate(['/files']);
+    this.router.navigate(['/folders']);
   }
 
   editfile(file: File): void {

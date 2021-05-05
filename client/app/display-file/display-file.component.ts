@@ -34,6 +34,6 @@ export class DisplayFileComponent implements OnInit {
     }
 
     cancelViewing(): void {
-      this.router.navigate(['/files']);
+      this.router.navigate(['/folders']);
     }
 }
