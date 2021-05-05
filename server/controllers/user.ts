@@ -1,10 +1,12 @@
 import * as jwt from 'jsonwebtoken';
 
 import User from '../models/user';
+import Folder from '../models/folder';
 import BaseCtrl from './base';
 
 class UserCtrl extends BaseCtrl {
   model = User;
+  modelFolder = Folder;
 
   login = (req, res) => {
     this.model.findOne({ email: req.body.email }, (err, user) => {
@@ -17,6 +19,17 @@ class UserCtrl extends BaseCtrl {
     });
   }
 
+  //Insert a root folder for every new user
+  insert = async (req, res) => {
+    try {
+      const newFolder = await new this.modelFolder({name: "root", parent: "root"}).save();
+      const newUser = await new this.model(req.body).save();
+      const obj = await this.model.findOneAndUpdate({_id: newUser._id}, { rootId: newFolder._id}, { new: true});
+      res.status(201).json(obj);
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
+    }
+  }
 }
 
 export default UserCtrl;
