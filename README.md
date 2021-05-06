@@ -50,7 +50,7 @@
 
 #  
 
-## Aide à l'utilisation
+### Aide à l'utilisation
 
 #### - : parties
 #### % : fonctionnalités
