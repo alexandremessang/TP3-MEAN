@@ -63,18 +63,15 @@
 ###### % Accès au Folders : visualisation des Folders Publics sous le format d'arborescence
 ###### @ accès en readonly (pas terminé)
 
-###### - Enregistrement d'un utilisateur
+##### - Enregistrement d'un utilisateur
 ###### @ L'enregistrement induit la création d'un Folder "root" pour l'utilisateur, qui lui permet ensuite d'accéder à son Folder à partir de Folders
 
-#### - Logger un utilisateur de rôle user
-
+##### - Logger un utilisateur de rôle user
 ###### % Accès à l'onglet Account, permettant de modifier ses propres informations
 ###### @ Tant que l'on n'a que deux rôles "user / admin" nous avons décidé de ne pas donner la possibilité de changer de rôle dans l'interface Account. Un admin ne peut perdre son rôle que de la part d'un autre admin, nous montrerons ça lors de la connexion Administrateur
-       
 ###### % Accès à MyFiles, permettant de voir et d'alimenter ses propres Files sur un tableau en vrac
 ###### % action d'ajout d'un File
 ###### % action de voir/edit/suppression sur ses propres Files
-     
 ###### % Accès à Folders, le système de classement personnalisé des Files, qui permet de se servir dans les Files publics des autres et dans ses propres Files pour se créer son arborescence personnelle de mémos
 ###### % accès à une vue unique des Files présents dans l'arborescence (comme pour le Dashboard)
 ###### % accès en modification aux Files que l'on a mit ou que l'on a récupéré sur nos Folders (pas terminé, passerait par le component edit-file)
